@@ -8,12 +8,19 @@
 	<properties>
 		<webdriver-binaries.version>1.0.4</webdriver-binaries.version>
 		<testng.version>7.1.0</testng.version>
-
+		<selcukes-core.version>0.0.1</selcukes-core.version>
+		<selenium.version>4.0.0-alpha-3</selenium.version>
+		
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>io.github.selcukes</groupId>
+			<artifactId>selcukes-core</artifactId>
+			<version>${selcukes-core.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>io.github.selcukes</groupId>
 			<artifactId>webdriver-binaries</artifactId>
@@ -23,7 +30,7 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>4.0.0-alpha-3</version>
+			<version>${selenium.version}</version>
 		</dependency>
 
 		<dependency>
