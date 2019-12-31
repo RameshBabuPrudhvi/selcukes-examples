@@ -6,15 +6,20 @@
 	<artifactId>selcukes-examples</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
-		<webdriver-binaries.version>1.0.4</webdriver-binaries.version>
+		<webdriver-binaries.version>dev-SNAPSHOT</webdriver-binaries.version>
 		<testng.version>7.1.0</testng.version>
-		<selcukes-core.version>0.0.1</selcukes-core.version>
+		<selcukes-core.version>dev-SNAPSHOT</selcukes-core.version>
 		<selenium.version>4.0.0-alpha-3</selenium.version>
-		
+
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
-
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>io.github.selcukes</groupId>

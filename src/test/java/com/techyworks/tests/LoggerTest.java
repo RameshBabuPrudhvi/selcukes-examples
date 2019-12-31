@@ -1,12 +1,9 @@
 package com.techyworks.tests;
 
+import io.github.selcukes.core.config.ConfigFactory;
 import io.github.selcukes.core.logging.Logger;
 import io.github.selcukes.core.logging.LoggerFactory;
 import org.testng.annotations.*;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.logging.LogManager;
 
 public class LoggerTest {
     private static final Logger logger = LoggerFactory.getLogger(LoggerTest.class);
@@ -14,19 +11,9 @@ public class LoggerTest {
    
     @BeforeTest
     public void beforeTest() {
-    	loadLoggerConfig();
+    	ConfigFactory.loadLoggerProperties();
     }
-    
-    public static void loadLoggerConfig()
-	{
-		InputStream stream = LoggerTest.class.getClassLoader().getResourceAsStream("logging.properties");
-		try {
-			LogManager.getLogManager().readConfiguration(stream);	
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+   
     @Test
     void error() {
         logger.error(() -> "Error");
