@@ -8,6 +8,6 @@ import io.cucumber.testng.CucumberOptions;
     glue = {"com.techyworks.cucumber.steps"}
     , plugin = {"pretty", "html:target/cucumber-reports", "json:target/cucumber-reports/cucumber.json"}
     , monochrome = true
-    , tags = {"@login"})
+    , tags = {"@pdf"})
 public class CucumberTestRunner extends AbstractTestNGCucumberTests {
 }

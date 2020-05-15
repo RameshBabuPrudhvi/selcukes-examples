@@ -3,13 +3,13 @@ Feature: Login
 
   Scenario: Login Failure
     Given User is on Home Page
-    And Sign In link is displayed
-    When User clicks the Sign In link
+    #And Sign In link is displayed
+    #When User clicks the Sign In link
     And User enters Credentials to login
       | Username | Password  |
       | user1    | password1 |
       | user2    | password2 |
-    Then User should be login failed message
+    #Then User should be login failed message
 
 
   Scenario: Book Store scenario
