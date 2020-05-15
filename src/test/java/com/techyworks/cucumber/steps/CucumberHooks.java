@@ -7,8 +7,7 @@ import io.github.selcukes.core.logging.LoggerFactory;
 public class CucumberHooks {
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public CucumberHooks(Controller controller)
-    {
+    public CucumberHooks(Controller controller) {
         controller.setupController();
     }
 

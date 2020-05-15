@@ -25,11 +25,13 @@ public class BookStoreSteps {
 
     @Given("{book} is my favorite book")
     public void this_is_my_favorite_book(Book book) {
-        logger.debug(book::getBookName);
+        logger.info(book::getBookName);
     }
 
     @Given("Books are defined by json")
     public void books_are_defined_by_json(JsonNode books) {
-        logger.debug(() -> String.valueOf(books.get("price")));
+        logger.info(() -> String.valueOf(books.get("Name")));
+        logger.info(() -> String.valueOf(books.get("Company")));
+        logger.info(() -> String.valueOf(books.get("Location")));
     }
 }

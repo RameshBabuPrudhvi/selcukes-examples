@@ -24,10 +24,11 @@ public class SignInSteps {
     public SignInSteps(Controller controller) {
         this.driver = controller.getDriver();
     }
+
     @Given("User is on Home Page")
     public void userIsOnHomePage() {
         driver.get("http://www.princexml.com/samples/");
-        logger.debug(() -> driver.getTitle());
+        logger.info(() -> driver.getTitle());
     }
 
     @And("Dictionary PDF link is displayed")
@@ -45,7 +46,7 @@ public class SignInSteps {
     @Then("User should verify {} in Browser")
     public void userShouldBeSeeTextInBrowser(String text) throws IOException {
         ReadPDF readPDF = new ReadPDF();
-        logger.debug(() -> "Sample Text :" + text);
+        logger.info(() -> "Sample Text :" + text);
         Assert.assertTrue(readPDF.verifyPDFContent(driver.getCurrentUrl(), text));
     }
 
@@ -66,7 +67,7 @@ public class SignInSteps {
     @When("User enters Credentials to login")
     public void userEntersCredentialsToLogin(List<TestData> tableData) {
         for (TestData rowData : tableData) {
-            logger.debug(rowData::toString);
+            logger.info(rowData::toString);
         }
     }
 

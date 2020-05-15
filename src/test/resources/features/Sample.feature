@@ -1,4 +1,4 @@
-@login
+
 Feature: Login
 
   Scenario: Login Failure
@@ -11,14 +11,14 @@ Feature: Login
       | user2    | password2 |
     #Then User should be login failed message
 
-
+@book
   Scenario: Book Store scenario
     Given Java is my favorite book
     Then Books are defined by json
    """json
   {
-     "produce": "Cucumbers",
-     "weight": "5 Kilo",
-     "price": "1€/Kilo"
+     "Name": "Java",
+     "Company": "Selcukes",
+     "Location": "India"
   }
   """

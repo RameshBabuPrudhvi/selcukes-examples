@@ -14,9 +14,9 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 public class BrowserTest {
-	private Logger logger = LoggerFactory.getLogger(BrowserTest.class);
+	private final Logger logger = LoggerFactory.getLogger(BrowserTest.class);
 
-	private String baseUrl = "https://www.google.com/";
+	private final String baseUrl = "https://www.google.com/";
 	private WebDriver driver;
 
 	@BeforeClass
