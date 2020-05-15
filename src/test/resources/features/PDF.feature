@@ -5,8 +5,8 @@ Feature: PDF
     Given User is on Home Page
     And Dictionary PDF link is displayed
     When User clicks the Dictionary PDF link
-    Then User should verify Text in Browser
+    And PDF is displayed Browser
+    Then User should verify <Text> in Browser
     Examples:
-    |Text|
-    | Old Icelandic   |
-
+      | Text          |
+      | Old Icelandic |
