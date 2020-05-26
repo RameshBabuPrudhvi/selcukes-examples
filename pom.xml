@@ -6,9 +6,8 @@
     <artifactId>selcukes-examples</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <properties>
-        <webdriver-binaries.version>1.1.0</webdriver-binaries.version>
+
         <testng.version>7.1.0</testng.version>
-        <selcukes-core.version>0.0.2</selcukes-core.version>
         <selenium.version>4.0.0-alpha-5</selenium.version>
         <cucumber.version>5.6.0</cucumber.version>
         <pdfbox.version>2.0.19</pdfbox.version>
@@ -23,15 +22,17 @@
         </repository>
     </repositories>
     <dependencies>
+
         <dependency>
             <groupId>io.github.selcukes</groupId>
-            <artifactId>selcukes-core</artifactId>
-            <version>${selcukes-core.version}</version>
+            <artifactId>chrome-devtools</artifactId>
+            <version>0.0.3</version>
         </dependency>
+
         <dependency>
             <groupId>io.github.selcukes</groupId>
             <artifactId>webdriver-binaries</artifactId>
-            <version>${webdriver-binaries.version}</version>
+            <version>LATEST</version>
         </dependency>
 
         <dependency>
