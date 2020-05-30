@@ -1,5 +1,6 @@
 package com.techyworks.cucumber.steps;
 
+
 import io.cucumber.java.*;
 import io.github.selcukes.core.logging.Logger;
 import io.github.selcukes.core.logging.LoggerFactory;
@@ -12,7 +13,6 @@ import org.openqa.selenium.WebDriver;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 
 public class CucumberHooks {
     Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -23,12 +23,14 @@ public class CucumberHooks {
 
         controller.setupController();
         driver = controller.getDriver();
-        recorder = new VideoRecorder();
+        recorder=new VideoRecorder();
     }
 
     @Before
     public void beforeTest(Scenario scenario) {
+        
         recorder.start();
+
         logger.info(() -> "Before Scenario .." + scenario.getName());
     }
 
@@ -50,10 +52,18 @@ public class CucumberHooks {
     public void afterTest(Scenario scenario) throws IOException {
         logger.info(() -> "After Scenario .." + scenario.getName());
 
-        if (scenario.isFailed())
-            recorder.stopAndSave(scenario.getName());
-        else
-            recorder.stopAndDelete(scenario.getName());
+        String videoPath= recorder.stopAndSave(scenario.getName().replace(" ","_")).getAbsolutePath();
+
+        StringBuilder htmlToEmbed = new StringBuilder();
+
+        htmlToEmbed.append("<video width=\"864\" height=\"576\" controls>")
+            .append("<source src=")
+            .append(videoPath).append(" type=\"video/mp4\">")
+            .append("Your browser does not support the video tag.")
+            .append("</video>");
+
+        byte[] objToEmbed = htmlToEmbed.toString().getBytes();
+        scenario.embed(objToEmbed, "text/html",scenario.getName());
 
         ChromeDevToolsService devToolsService = DevToolsService.getDevToolsService(driver);
         byte[] screenshot = Screenshot.captureFullPageAsBytes(devToolsService);

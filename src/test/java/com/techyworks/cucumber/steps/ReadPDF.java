@@ -13,6 +13,7 @@ public class ReadPDF {
         BufferedInputStream TestFile = new BufferedInputStream(pdfUrl.openStream());
         PDDocument pdDoc = PDDocument.load(TestFile);
         PDFTextStripper pdfStripper = new PDFTextStripper();
+
         //Specify the range which will read first five pages of the PDF
         pdfStripper.setStartPage(1);
         pdfStripper.setEndPage(5);
