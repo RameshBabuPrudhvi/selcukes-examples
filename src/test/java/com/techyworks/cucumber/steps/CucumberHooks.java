@@ -4,32 +4,28 @@ package com.techyworks.cucumber.steps;
 import io.cucumber.java.*;
 import io.github.selcukes.core.logging.Logger;
 import io.github.selcukes.core.logging.LoggerFactory;
-import io.github.selcukes.devtools.DevToolsService;
-import io.github.selcukes.devtools.core.Screenshot;
-import io.github.selcukes.devtools.services.ChromeDevToolsService;
-import io.github.selcukes.reports.video.Recorder;
-import io.github.selcukes.reports.video.VideoRecorder;
+import io.github.selcukes.reports.screen.ScreenPlay;
+import io.github.selcukes.reports.screen.ScreenPlayBuilder;
 import org.openqa.selenium.WebDriver;
 
-import java.io.File;
 import java.io.IOException;
 
 public class CucumberHooks {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     WebDriver driver;
-    Recorder recorder;
+    ScreenPlay screenPlay;
 
     public CucumberHooks(Controller controller) {
 
         controller.setupController();
         driver = controller.getDriver();
-        recorder=new VideoRecorder();
     }
 
     @Before
     public void beforeTest(Scenario scenario) {
-        
-        recorder.start();
+        screenPlay = ScreenPlayBuilder.getScreenPlay(driver, scenario);
+        screenPlay.start();
+
 
         logger.info(() -> "Before Scenario .." + scenario.getName());
     }
@@ -51,23 +47,9 @@ public class CucumberHooks {
     @After
     public void afterTest(Scenario scenario) throws IOException {
         logger.info(() -> "After Scenario .." + scenario.getName());
-
-        String videoPath= recorder.stopAndSave(scenario.getName().replace(" ","_")).getAbsolutePath();
-
-        StringBuilder htmlToEmbed = new StringBuilder();
-
-        htmlToEmbed.append("<video width=\"864\" height=\"576\" controls>")
-            .append("<source src=")
-            .append(videoPath).append(" type=\"video/mp4\">")
-            .append("Your browser does not support the video tag.")
-            .append("</video>");
-
-        byte[] objToEmbed = htmlToEmbed.toString().getBytes();
-        scenario.embed(objToEmbed, "text/html",scenario.getName());
-
-        ChromeDevToolsService devToolsService = DevToolsService.getDevToolsService(driver);
-        byte[] screenshot = Screenshot.captureFullPageAsBytes(devToolsService);
-        scenario.embed(screenshot, "image/png", "screenshot");
-
+        screenPlay.attachScreenshot();
+        screenPlay.attachVideo();
+        System.setProperty("selcukes.teams.hooksUrl","");
+        screenPlay.teamsNotification(scenario.getName());
     }
 }
