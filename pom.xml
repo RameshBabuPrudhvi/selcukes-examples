@@ -25,21 +25,19 @@
 
         <dependency>
             <groupId>io.github.selcukes</groupId>
-            <artifactId>selcukes-reports</artifactId>
-            <version>dev-SNAPSHOT</version>
+            <artifactId>webdriver-binaries</artifactId>
+            <version>1.2.0</version>
         </dependency>
-
         <dependency>
             <groupId>io.github.selcukes</groupId>
-            <artifactId>webdriver-binaries</artifactId>
-            <version>LATEST</version>
+            <artifactId>selcukes-reports</artifactId>
+            <version>dev-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
-
         </dependency>
 
         <dependency>
@@ -52,14 +50,8 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
-
         </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-core</artifactId>
-            <version>${cucumber.version}</version>
 
-        </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
