@@ -2,6 +2,7 @@ package com.techyworks.cucumber.steps;
 
 import io.github.selcukes.wdb.WebDriverBinary;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -22,14 +23,15 @@ public class Controller {
     public void setupController() {
 
         WebDriverBinary.chromeDriver().setup();
-        ChromeOptions options = new ChromeOptions();
+        driver=new ChromeDriver();
+        /*ChromeOptions options = new ChromeOptions();
         try {
             this.driver = new RemoteWebDriver(
                 new URL("http://172.18.62.149:30001/wd/hub"),
                 options);
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public void teardownController() {
