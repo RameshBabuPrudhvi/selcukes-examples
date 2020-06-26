@@ -1,4 +1,4 @@
-package com.techyworks.cucumber.steps;
+package io.github.selcukes.cucumber.steps;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;

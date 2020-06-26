@@ -1,4 +1,4 @@
-package com.techyworks.cucumber.steps;
+package io.github.selcukes.cucumber.steps;
 
 
 import io.cucumber.java.DataTableType;
@@ -8,6 +8,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.selcukes.core.logging.Logger;
 import io.github.selcukes.core.logging.LoggerFactory;
+import io.github.selcukes.cucumber.drivers.Controller;
+import io.github.selcukes.cucumber.pages.TestData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;

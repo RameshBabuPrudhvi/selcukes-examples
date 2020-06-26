@@ -1,4 +1,4 @@
-package com.techyworks.cucumber.steps;
+package io.github.selcukes.cucumber.pages;
 
 public class TestData {
 

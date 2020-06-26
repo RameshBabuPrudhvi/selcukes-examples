@@ -1,13 +1,8 @@
-package com.techyworks.cucumber.steps;
+package io.github.selcukes.cucumber.drivers;
 
 import io.github.selcukes.wdb.WebDriverBinary;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class Controller {
     private WebDriver driver;
@@ -23,7 +18,8 @@ public class Controller {
     public void setupController() {
 
         WebDriverBinary.chromeDriver().setup();
-        driver=new ChromeDriver();
+        driver = new ChromeDriver();
+
         /*ChromeOptions options = new ChromeOptions();
         try {
             this.driver = new RemoteWebDriver(
@@ -39,4 +35,5 @@ public class Controller {
             driver.quit();
         }
     }
+
 }

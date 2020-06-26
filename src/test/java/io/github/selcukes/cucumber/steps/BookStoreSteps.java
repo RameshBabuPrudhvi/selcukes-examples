@@ -1,4 +1,4 @@
-package com.techyworks.cucumber.steps;
+package io.github.selcukes.cucumber.steps;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -8,6 +8,7 @@ import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.github.selcukes.core.logging.Logger;
 import io.github.selcukes.core.logging.LoggerFactory;
+import io.github.selcukes.cucumber.pages.Book;
 
 public class BookStoreSteps {
     Logger logger = LoggerFactory.getLogger(BookStoreSteps.class);

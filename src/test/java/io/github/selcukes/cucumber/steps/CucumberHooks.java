@@ -1,10 +1,11 @@
-package com.techyworks.cucumber.steps;
-
+package io.github.selcukes.cucumber.steps;
 
 import io.cucumber.java.*;
 import io.github.selcukes.core.config.ConfigFactory;
 import io.github.selcukes.core.logging.Logger;
 import io.github.selcukes.core.logging.LoggerFactory;
+import io.github.selcukes.cucumber.drivers.Controller;
+import io.github.selcukes.reports.enums.RecorderType;
 import io.github.selcukes.reports.screen.ScreenPlay;
 import io.github.selcukes.reports.screen.ScreenPlayBuilder;
 import org.openqa.selenium.WebDriver;
@@ -23,9 +24,9 @@ public class CucumberHooks {
     @Before
     public void beforeTest(Scenario scenario) {
 
-
-        screenPlay = ScreenPlayBuilder.getScreenPlay(driver, scenario);
-        screenPlay.start();
+        screenPlay = ScreenPlayBuilder.getScreenPlay(driver)
+            .withRecorder(RecorderType.FFMPEG)
+            .start();
 
         logger.info(() -> "Before Scenario .." + scenario.getName());
     }
@@ -41,17 +42,17 @@ public class CucumberHooks {
 
         logger.info(() -> "After Step");
         logger.info(() -> "Scenario Status:" + scenario.getStatus());
-        /*String allLogs = logRecordListener.getLogRecords()
-            .map(LogRecord::getMessage)
-            .collect(Collectors.joining("\n  --> ", "\n--ALL Logs-- \n\n  --> ", "\n\n--End Of Logs--"));
 
-        scenario.write(allLogs);*/
     }
 
     @After
     public void afterTest(Scenario scenario) {
         logger.info(() -> "After Scenario .." + scenario.getName());
-        screenPlay.attachScreenshot();
-        screenPlay.attachVideo();
+
+        screenPlay.withResult(scenario)
+            .ignoreCondition()
+            .attachScreenshot()
+            .attachVideo();
+
     }
 }
