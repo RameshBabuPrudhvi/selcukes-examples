@@ -1,9 +1,9 @@
-
 Feature: Login
 
+  @login
   Scenario: Login Failure
     Given User is on Home Page
-    #And Sign In link is displayed
+   # And Sign In link is displayed
     #When User clicks the Sign In link
     And User enters Credentials to login
       | Username | Password  |
@@ -11,7 +11,7 @@ Feature: Login
       | user2    | password2 |
     #Then User should be login failed message
 
-@book
+  @book
   Scenario: Book Store scenario
     Given Java is my favorite book
     Then Books are defined by json

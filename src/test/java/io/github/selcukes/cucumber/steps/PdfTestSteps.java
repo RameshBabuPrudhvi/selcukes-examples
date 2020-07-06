@@ -19,11 +19,11 @@ import java.util.List;
 import java.util.Map;
 
 
-public class SignInSteps {
-    Logger logger = LoggerFactory.getLogger(SignInSteps.class);
+public class PdfTestSteps {
+    Logger logger = LoggerFactory.getLogger(PdfTestSteps.class);
     WebDriver driver;
 
-    public SignInSteps(Controller controller) {
+    public PdfTestSteps(Controller controller) {
         this.driver = controller.getDriver();
     }
 

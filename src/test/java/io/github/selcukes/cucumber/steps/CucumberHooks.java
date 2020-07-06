@@ -27,7 +27,7 @@ public class CucumberHooks {
         screenPlay = ScreenPlayBuilder.getScreenPlay(driver)
             .withRecorder(RecorderType.FFMPEG)
             .start();
-
+        //driver.get("http://google.com/");
         logger.info(() -> "Before Scenario .." + scenario.getName());
     }
 
@@ -47,7 +47,7 @@ public class CucumberHooks {
 
     @After
     public void afterTest(Scenario scenario) {
-        logger.info(() -> "After Scenario .." + scenario.getName());
+        logger.info(() -> "After Scenario .." + scenario.getName().replace(" ", "_"));
 
         screenPlay.withResult(scenario)
             .ignoreCondition()

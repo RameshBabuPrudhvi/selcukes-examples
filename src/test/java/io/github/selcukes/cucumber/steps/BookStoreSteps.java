@@ -34,5 +34,6 @@ public class BookStoreSteps {
         logger.info(() -> String.valueOf(books.get("Name")));
         logger.info(() -> String.valueOf(books.get("Company")));
         logger.info(() -> String.valueOf(books.get("Location")));
+        throw new RuntimeException("BookStoreException");
     }
 }
