@@ -27,12 +27,12 @@
         <dependency>
             <groupId>io.github.selcukes</groupId>
             <artifactId>webdriver-binaries</artifactId>
-            <version>1.2.0</version>
+            <version>1.2.1</version>
         </dependency>
         <dependency>
             <groupId>io.github.selcukes</groupId>
             <artifactId>selcukes-reports</artifactId>
-            <version>0.0.3</version>
+            <version>0.0.4</version>
         </dependency>
 
         <dependency>
@@ -83,4 +83,40 @@
         </dependency>
 
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.github.selcukes</groupId>
+                <artifactId>selcukes-report-plugin</artifactId>
+                <version>0.0.1</version>
+                <executions>
+                    <execution>
+                        <id>report</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>reporting</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <sourceJsonReportDirectory>${project.build.directory}/cucumber-reports</sourceJsonReportDirectory>
+                    <generatedHtmlReportDirectory>${project.build.directory}/selcukes-html-reports
+                    </generatedHtmlReportDirectory>
+                    <customParameters>
+                        <Title>Selcukes Test</Title>
+                        <URL>http://www.google.com</URL>
+                        <_KeysStartingWithAnUnderscoreAreHidden>This is a long text that is displayed without the key.
+                            This can be used to display longer texts in the report!
+                        </_KeysStartingWithAnUnderscoreAreHidden>
+                    </customParameters>
+
+                    <!-- Optional report page title -->
+                    <customPageTitle>My Report</customPageTitle>
+
+                    <expandBeforeAfterHooks>true</expandBeforeAfterHooks>
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
