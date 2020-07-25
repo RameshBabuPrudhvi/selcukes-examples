@@ -6,8 +6,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.java.DocStringType;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
-import io.github.selcukes.core.logging.Logger;
-import io.github.selcukes.core.logging.LoggerFactory;
+
+import io.github.selcukes.commons.logging.Logger;
+import io.github.selcukes.commons.logging.LoggerFactory;
 import io.github.selcukes.cucumber.pages.Book;
 
 public class BookStoreSteps {

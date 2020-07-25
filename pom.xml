@@ -12,6 +12,7 @@
         <cucumber.version>5.6.0</cucumber.version>
         <pdfbox.version>2.0.19</pdfbox.version>
         <zxing.version>3.4.0</zxing.version>
+		<selcukes.version>master-SNAPSHOT</selcukes.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -26,13 +27,14 @@
 
         <dependency>
             <groupId>io.github.selcukes</groupId>
-            <artifactId>webdriver-binaries</artifactId>
-            <version>1.2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.selcukes</groupId>
-            <artifactId>selcukes-reports</artifactId>
-            <version>0.0.4</version>
+            <artifactId>selcukes-java</artifactId>
+            <version>${selcukes.version}</version>
+           <!-- <exclusions>
+                <exclusion>
+                <groupId>io.github.selcukes.selcukes-java</groupId>
+                <artifactId>selcukes-testng</artifactId>
+                </exclusion>
+            </exclusions>-->
         </dependency>
 
         <dependency>
@@ -88,7 +90,7 @@
             <plugin>
                 <groupId>io.github.selcukes</groupId>
                 <artifactId>selcukes-report-plugin</artifactId>
-                <version>0.0.1</version>
+                <version>0.0.2-SNAPSHOT</version>
                 <executions>
                     <execution>
                         <id>report</id>
@@ -99,11 +101,10 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <sourceJsonReportDirectory>${project.build.directory}/cucumber-reports</sourceJsonReportDirectory>
-                    <generatedHtmlReportDirectory>${project.build.directory}/selcukes-html-reports
-                    </generatedHtmlReportDirectory>
+                    <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>
+                    <outputDirectory>${project.build.directory}/selcukes-html-reports</outputDirectory>
                     <customParameters>
-                        <Title>Selcukes Test</Title>
+                        <Project>Selcukes Test</Project>
                         <URL>http://www.google.com</URL>
                         <_KeysStartingWithAnUnderscoreAreHidden>This is a long text that is displayed without the key.
                             This can be used to display longer texts in the report!

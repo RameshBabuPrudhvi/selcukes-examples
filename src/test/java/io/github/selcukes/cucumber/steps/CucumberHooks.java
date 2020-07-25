@@ -1,9 +1,8 @@
 package io.github.selcukes.cucumber.steps;
 
 import io.cucumber.java.*;
-import io.github.selcukes.core.config.ConfigFactory;
-import io.github.selcukes.core.logging.Logger;
-import io.github.selcukes.core.logging.LoggerFactory;
+import io.github.selcukes.commons.logging.Logger;
+import io.github.selcukes.commons.logging.LoggerFactory;
 import io.github.selcukes.cucumber.drivers.Controller;
 import io.github.selcukes.reports.enums.RecorderType;
 import io.github.selcukes.reports.screen.ScreenPlay;
@@ -16,7 +15,6 @@ public class CucumberHooks {
     ScreenPlay screenPlay;
 
     public CucumberHooks(Controller controller) {
-        ConfigFactory.loadLoggerProperties();
         controller.setupController();
         driver = controller.getDriver();
     }
@@ -27,7 +25,6 @@ public class CucumberHooks {
         screenPlay = ScreenPlayBuilder.getScreenPlay(driver)
             .withRecorder(RecorderType.FFMPEG)
             .start();
-        //driver.get("http://google.com/");
         logger.info(() -> "Before Scenario .." + scenario.getName());
     }
 
